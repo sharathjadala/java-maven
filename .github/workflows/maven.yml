@@ -29,13 +29,27 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: version change
+      run: |
+        a=$(cat VERSION)
+        echo $a
+        b=$(awk -vFS=. -vOFS=. '{$3++;print}' <<<$a)
+        sed -i {s/$a/$b/} VERSION
+        cat VERSION
+        ls -a
+        pwd
+        git config --global user.email "sharath.kumarjadala@livewire.com"
+        git config --global user.name "sharath"
+        git add /home/runner/work/livewire-viot-mobile-api/livewire-viot-mobile-api/VERSION
+        git commit -m "Bumped version"
+        git push origin master --force
   
     - name: Create Release
       uses: actions/create-release@v1
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB }} # This token is provided by Actions, you do not need to create your own token
       with:
-          tag_name: a=$(cat VERSION)
+          tag_name: $VERSION
           release_name: Release $VERSION
           body: |
             Changes in this Release
