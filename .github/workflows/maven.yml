@@ -43,7 +43,7 @@ jobs:
         git add /home/runner/work/java-maven/java-maven/VERSION
         git commit -m "Bumped version"
         git push origin master --force
-    - uses: release-drafter/release-drafter@v5
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB }}
-       TAG: ${{version}}
+    - run: git tag $version
+    - run: git tag
