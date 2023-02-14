@@ -36,7 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.github }} # This token is provided by Actions, you do not need to create your own token
       with:
           tag_name: ${{VERSION }}
-          release_name: Release ${{ VERSION}}
+          release_name: Release ${{ VERSION }}
           body: |
             Changes in this Release
             - First Change
