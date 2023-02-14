@@ -49,6 +49,6 @@ jobs:
        echo $a
        cat VERSION
        git tag $version
-       git push origin $version
+       git push origin $version --force
          
         
