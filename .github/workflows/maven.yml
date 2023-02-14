@@ -48,7 +48,7 @@ jobs:
        a=$(cat VERSION)
        echo $a
        cat VERSION
-       git tag /home/runner/work/java-maven/java-maven/VERSION
+       git tag $VERSION
        git tag
          
         
