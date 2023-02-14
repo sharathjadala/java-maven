@@ -29,8 +29,17 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - uses: release-drafter/release-drafter@v5
-    - name: realease version
-    - run: |
-            tag_name: ${{ VERSION }}
-            Release ${{ VERSION }}
+  
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+          tag_name: ${{VERSION }}
+          release_name: Release ${{ VERSION}}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
