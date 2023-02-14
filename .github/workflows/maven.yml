@@ -45,6 +45,6 @@ jobs:
         git push origin master --force
         a=$(cat VERSION)
         echo "Tagging $a"
-        git tag -d $a
+        git tag  $a
         git push origin $a
        
