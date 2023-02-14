@@ -44,4 +44,4 @@ jobs:
         git commit -m "Bumped version"
         git push origin master --force
         git tag $version
-        git push origin release/$version
+        git push origin $version
