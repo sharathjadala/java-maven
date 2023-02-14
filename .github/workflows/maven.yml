@@ -40,7 +40,7 @@ jobs:
         pwd
         git config --global user.email "sharath.kumarjadala@livewire.com"
         git config --global user.name "sharath"
-        git add /home/runner/work/livewire-viot-mobile-api/livewire-viot-mobile-api/VERSION
+        git add /home/runner/work/java-maven/java-maven/VERSION
         git commit -m "Bumped version"
         git push origin master --force
   
