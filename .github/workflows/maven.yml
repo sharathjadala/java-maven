@@ -29,3 +29,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - uses: release-drafter/release-drafter@v5
+    - name: realease version
+    - run: |
+            tag_name: ${{ VERSION }}
+            Release ${{ VERSION }}
