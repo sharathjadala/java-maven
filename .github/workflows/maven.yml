@@ -44,6 +44,8 @@ jobs:
         git commit -m "Bumped version"
         git push origin master --force
     - name: realease create
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB }}
       run: |
        a=$(cat VERSION)
        echo $a
