@@ -43,7 +43,7 @@ jobs:
         git add /home/runner/work/java-maven/java-maven/VERSION
         git commit -m "Bumped version"
         git push origin master --force
-        a=$(cat /home/runner/work/java-maven/java-maven/VERSION)
-        cat VERSION
+        a=$(cat VERSION)
+        echo $a
         git tag $version
         git push origin $version
