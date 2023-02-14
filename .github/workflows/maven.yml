@@ -43,7 +43,8 @@ jobs:
         git add /home/runner/work/java-maven/java-maven/VERSION
         git commit -m "Bumped version"
         git push origin master --force
-  
+        git tag -a $VERSION
+        git tag
     - name: Create Release
       uses: actions/create-release@v1
       env:
