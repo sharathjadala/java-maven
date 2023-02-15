@@ -58,7 +58,7 @@ jobs:
     - name: docker build and pushing images to acr
       run: |
        version=$(cat VERSION)
-       docker build -t sharath1.azurecr.io/signup:$version -f /home/runner/work/java-maven/java-maven/Dockerfile .
-       docker tag sharath1.azurecr.io/signup:$version sharath1.azurecr.io/sign:latest
-       docker push sharath1.azurecr.io/signup:$version 
-       docker push sharath1.azurecr.io/signup:latest
+       docker build -t signup.azurecr.io/signup:$version -f /home/runner/work/java-maven/java-maven/Dockerfile .
+       docker tag signup.azurecr.io/signup:$version signup.azurecr.io/signup:latest
+       docker push signup.azurecr.io/signup:$version 
+       docker push signup.azurecr.io/signup:latest
