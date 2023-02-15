@@ -2,9 +2,9 @@ name: Java CI with Mavenn
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
@@ -37,7 +37,7 @@ jobs:
         git config --global user.name "sharath"
         git add /home/runner/work/java-maven/java-maven/VERSION
         git commit -m "Bumped version"
-        git push origin dev --force
+        git push origin master --force
         a=$(cat VERSION)
         echo "Tagging $a"
         git tag  $a
