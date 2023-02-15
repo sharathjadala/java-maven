@@ -37,7 +37,7 @@ jobs:
         git config --global user.name "sharath"
         git add /home/runner/work/java-maven/java-maven/VERSION
         git commit -m "Bumped version"
-        git push origin master --force
+        git push origin dev --force
         a=$(cat VERSION)
         echo "Tagging $a"
         git tag  $a
