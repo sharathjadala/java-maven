@@ -42,5 +42,18 @@ jobs:
         echo "Tagging $a"
         git tag  $a
         git push origin $a
- 
-        
+        #Here We are Uploading Jar file to github actions 
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: sss
+        path: /home/runner/work/java-maven/java-maven/target/my-app-1.0-SNAPSHOT.jar
+#This Step includes Azure Container registry Login 
+    - name: Login to ACR
+      uses: azure/docker-login@v1
+      with:
+          login-server:  signup.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+          
