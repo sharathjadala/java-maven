@@ -54,6 +54,6 @@ jobs:
       uses: azure/docker-login@v1
       with:
           login-server:  signup.azurecr.io
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          username: ${{ secrets.ACR_USERNAME1 }}
+          password: ${{ secrets.ACR_PASSWORD1 }}
           
