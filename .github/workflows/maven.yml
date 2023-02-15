@@ -55,3 +55,10 @@ jobs:
           login-server:  signup.azurecr.io
           username: ${{ secrets.ACR_USERNAME1 }}
           password: ${{ secrets.ACR_PASSWORD1 }}
+    - name: docker build and pushing images to acr
+      run: |
+       version=$(cat VERSION)
+       docker build -t signup.azurecr.io/sign:$version -f /home/runner/work/java-maven/java-maven/Dockerfile .
+       docker tag signup.azurecr.io/sign:$version signup.azurecr.io/sign:$version:latest
+       docker push signup.azurecr.io/sign:$version 
+       docker push signup.azurecr.io/sign:latest
