@@ -50,4 +50,57 @@ jobs:
         echo "Tagging $a"
         git tag  $a
         git push origin $a
-       
+ 
+
+
+
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
+
+jobs:
+  build:
+   
+
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+    - name: version change
+      run: |
+        a=$(cat VERSION)
+        echo $a
+        b=$(awk -vFS=. -vOFS=. '{$3++;print}' <<<$a)
+        sed -i {s/$a/$b/} VERSION
+        cat VERSION
+        ls -a
+        pwd
+        git config --global user.email "sharath.kumarjadala@livewire.com"
+        git config --global user.name "sharath"
+        git add /home/runner/work/java-maven/java-maven/VERSION
+        git commit -m "Bumped version"
+        git push origin master --force
+        a=$(cat VERSION)
+        echo "Tagging $a"
+        git tag  $a
+        git push origin $a
+        
+        build_web_app2:
+         runs-on: ubuntu-latest
+         environment:
+         name: dev
+
+
+
