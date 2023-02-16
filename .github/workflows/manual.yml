@@ -27,7 +27,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: |  
-        echo Github pat token is ${{ secrets.GITHUB }}
-        gh workflow run maven.yaml --ref dev
+      run: gh workflow run maven.yaml --ref dev
+      env:
+       GH_TOKEN: ${{secrets.GITHUB}}
       
