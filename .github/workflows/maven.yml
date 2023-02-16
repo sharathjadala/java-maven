@@ -1,11 +1,16 @@
-name: Java CI with Mavenn
+name: Print environment variable
 
 on:
   push:
-    branches: [ "dev" ]
-  pull_request:
-    branches: [ "dev" ]
-
+    branches:
+      - master
+      - dev
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: string
+        default: dev
+        required: true
 jobs:
   build:
    
